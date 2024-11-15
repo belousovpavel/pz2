@@ -27,5 +27,12 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run tests
-      run: | 
+      run: |
         pytest
+
+    - name: Merge pull request
+      if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'development'
+      uses: actions-ecosystem/action-merge-pull-request@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pull_request_number: ${{ github.event.pull_request.number }}
