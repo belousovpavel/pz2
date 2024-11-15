@@ -33,4 +33,4 @@ jobs:
     - name: Generate documentation
       run: |
         mkdocs build
-        mkdocs gh-deploy 
+        mkdocs gh-deploy
