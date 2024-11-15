@@ -1,0 +1,4 @@
+site_name: My Project Documentation
+nav:
+  - Home: README.md
+theme: readthedocs
