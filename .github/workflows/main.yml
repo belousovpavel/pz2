@@ -31,8 +31,10 @@ jobs:
         pytest
 
     - name: Merge pull request
-      if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'development'
-      uses: actions-ecosystem/action-merge-pull-request@v1
+      if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'development' && github.event.pull_request.mergeable
+      uses: peter-evans/merge-pull-request-action@v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         pull_request_number: ${{ github.event.pull_request.number }}
+        commit_message: "Auto-merge PR"
+        merge_method: "merge"
